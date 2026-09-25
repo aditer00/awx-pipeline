@@ -9,7 +9,7 @@ This configuration looks up an existing AWX inventory and launches an existing A
 - Push this repository to Git and create an AWX Project pointing to it. Set the project SCM branch/revision and enable **Update Revision on Launch** if AWX should pull the latest commit each run.
 - Create an inventory-capable Job Template using the project and `playbooks/site.yml`. Enable **Prompt on launch** for Inventory so the inventory passed by Terraform can be selected.
 - The playbook configures `desired_timezone` and optionally installs the package names in `packages`. Remove either variable from `job_extra_vars` to leave that setting untouched. It does not perform general OS upgrades or modify SSH access.
-- The playbook uses `community.general.timezone`; include `community.general` in the AWX execution environment (or its requirements file). Package installation uses Ansible's built-in `package` module.
+- The playbook uses the `community.general.timezone` module. AWX must install `playbooks/requirements.yml` when synchronizing the Project, and its Execution Environment must include that collection. Package installation uses the host's native package manager through Ansible's built-in `package` module.
 - Attach the SSH machine credential and execution environment to the Job Template. Keep private keys and passwords in AWX credentials, not in Terraform variables.
 - Create an AWX token for a service account with permission to manage the inventory/hosts and launch this Job Template.
 - Ensure the AWX execution environment can reach the target Linux hosts over SSH.
