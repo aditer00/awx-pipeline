@@ -20,7 +20,7 @@ variable "job_template_id" {
 
 variable "job_extra_vars" {
   description = "Additional variables passed to the AWX Job Template at launch."
-  type        = map(any)
+  type        = any
   default     = {}
 }
 
