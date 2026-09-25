@@ -1,0 +1,9 @@
+awx_url          = "https://awx.example.com"
+organization_name = "Default"
+inventory_name    = "linux-servers"
+job_template_id  = 12
+
+job_extra_vars = {
+  desired_timezone = "Asia/Jakarta"
+  packages         = ["curl", "vim"]
+}

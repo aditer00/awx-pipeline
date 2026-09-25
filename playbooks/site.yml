@@ -1,0 +1,19 @@
+---
+- name: Configure managed Linux servers
+  hosts: all
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: Configure system timezone
+      community.general.timezone:
+        name: "{{ desired_timezone }}"
+      when: desired_timezone is defined
+
+    - name: Install requested packages
+      ansible.builtin.package:
+        name: "{{ packages }}"
+        state: present
+      when:
+        - packages is defined
+        - packages | length > 0

@@ -1,0 +1,15 @@
+# Terraform working directories and local state
+**/.terraform/*
+**/terraform.tfstate
+**/terraform.tfstate.*
+**/*.tfplan
+**/crash.log
+**/crash.*.log
+
+# Local Terraform variable files; keep example files tracked
+**/terraform.tfvars
+**/terraform.tfvars.*
+!**/terraform.tfvars.example
+
+# Editor and operating-system files
+.DS_Store
